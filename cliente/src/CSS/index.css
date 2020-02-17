@@ -1,0 +1,9 @@
+router-link {cursor: pointer !important;}
+.search{
+    background-image: url('./../assets/lupa.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1.5rem !important;
+    height:1.5rem !important;
+    box-sizing: border-box;
+  }

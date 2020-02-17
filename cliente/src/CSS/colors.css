@@ -1,0 +1,27 @@
+.bg-night{
+    background-color:rgba(0, 0, 0, 0.65)
+}
+.bg-second{
+    background-color: rgba(128, 128, 128, 1);
+}
+.bg-white{
+    background-color: white !important;
+}
+.bg-red{
+    background-color: rgba(128, 6, 27, 1) !important;
+}
+.bg-green{
+    background-color: rgba(0, 114, 25, 1) !important;
+}
+.bg-primary{
+    background-color: rgba(13, 93, 128, 1) !important
+}
+
+
+.text-red{
+    color: rgba(128, 6, 27, 1) !important;
+}
+.text-green{
+    color: rgba(0, 114, 25, 1) !important;
+}
+
