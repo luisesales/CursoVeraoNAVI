@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "./../components/Pages/Home"
-//import Home from "./../components/Pages/Home"
+import Home from "../components/Pages/Home"
+
 
 
 Vue.use(VueRouter);
@@ -16,11 +16,11 @@ const router = new VueRouter({
             component: Home,
         },
 
-        /*{
-            path: '/veiculos',
-            name: 'veiculos',
-            component: Veiculos
-        }*/
+        {
+            path: '/vendas',
+            name: 'vendas',
+            component: Vendas
+        }
     ]
 });
 export default router;

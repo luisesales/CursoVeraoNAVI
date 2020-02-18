@@ -1,9 +1,35 @@
 router-link {cursor: pointer !important;}
+
 .search{
     background-image: url('./../assets/lupa.svg');
-    background-size: contain;
+    background-size: contain !important;
     background-repeat: no-repeat;
     width: 1.5rem !important;
     height:1.5rem !important;
-    box-sizing: border-box;
+    display:inline-block !important;
+  }
+
+  .logo{
+    background-image: url("./../assets/logo-navi-sem-texto.svg");
+    background-size: contain !important;
+    background-repeat:no-repeat !important;
+    height: 2.75rem !important;
+    width: 2.75rem !important;
+  }
+
+  .user{
+    background-image: url("./../assets/user-solid-white.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 2rem !important;
+    width: 1rem !important;
+  }
+
+  .trash{
+    background-image: url('./../assets/trash-alt-solid.svg');
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    width: 1.5rem !important;
+    height:1.5rem !important;
+    display:inline-block !important;
   }
