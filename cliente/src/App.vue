@@ -28,8 +28,9 @@ export default {
 @import "./CSS/colors.css";
 @import "./CSS/module.css";
 #app {
-  background-color: rgb(167, 167, 167);
+  
+  background-color: rgb(32, 32, 32);
   color: white;
-  height: 100%;
+  min-height: 100vh;
 }
 </style>

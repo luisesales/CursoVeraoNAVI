@@ -23,7 +23,12 @@
     </div>
     <div id="containerCards">
       <template v-for="item in items.data">
-        <CardVeiculos v-on:editarVeiculo="(showEditarVeiculoModal($event))" :key="item.id" :item="item" />
+        <CardVeiculos
+          v-on:deletarRegistro="deletarRegistro($event)"
+          v-on:editarVeiculo="(showEditarVeiculoModal($event))"
+          :key="item.id"
+          :item="item"
+        />
       </template>
     </div>
 
@@ -251,7 +256,20 @@ export default {
     }
   },
   methods: {
-      editarVeiculo() {
+    deletarRegistro(id) {
+      const vm = this;
+      fetch(`${BASE_URL}/veiculos/${id}`, {
+        method: "delete",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      }).then(response => {
+        window.console.log(response);
+        vm.carregarDados();
+      });
+    },
+    editarVeiculo() {
       console.log(JSON.stringify(this.veiculo));
       console.log(this.veiculo.id);
       fetch(`${BASE_URL}/veiculos/${this.veiculo.id}`, {
@@ -267,7 +285,13 @@ export default {
         window.console.log(response);
 
         Swal.fire("Veiculo editado com sucesso!", "", "success").then(
-          this.hideEditarVeiculoModal()
+          this.hideEditarVeiculoModal(),
+          (this.veiculo = {
+            modelo: null,
+            fabricante: null,
+            ano_fabricacao: null,
+            valor: null
+          })
         );
         //return this.$router.push({ name: "home" });
       });
@@ -285,9 +309,15 @@ export default {
       }).then(response => {
         window.console.log(response);
 
-        Swal.fire("Veiculo criado com sucesso!", "", "success");
-
-        return this.$router.push({ name: "veiculos" });
+        Swal.fire("Veiculo criado com sucesso!", "", "success").then(
+          this.hideCriarVeiculoModal(),
+          (this.veiculo = {
+            modelo: null,
+            fabricante: null,
+            ano_fabricacao: null,
+            valor: null
+          })
+        );
       });
     },
     showCriarVeiculoModal() {
@@ -297,7 +327,7 @@ export default {
       this.$modal.hide("criar-veiculo-modal");
     },
     showEditarVeiculoModal(veiculo) {
-      this.veiculo = veiculo
+      this.veiculo = veiculo;
       console.log(this.veiculo);
       this.$modal.show("editar-veiculo-modal");
     },

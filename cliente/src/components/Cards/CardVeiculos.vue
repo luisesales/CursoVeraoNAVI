@@ -47,8 +47,6 @@
 
 <script>
 import Swal from "sweetalert2";
-
-const BASE_URL = "http://localhost:8000/api";
 export default {
   name: "CardVeiculos",
   props: {
@@ -110,7 +108,7 @@ export default {
         cancelButtonText: "Não"
       }).then(result => {
         if (result.value) {
-          this.deletarRegistro(id);
+          this.$emit('deletarRegistro',id);
           Swal.fire("Sucesso", "Operação realizada com sucesso", "success");
         } else {
           Swal.fire("Cancelado", "Operação cancelada com sucesso", "error");
@@ -120,19 +118,6 @@ export default {
     atribuirPaginaAtual(pagina) {
       this.paginaAtual = pagina;
     },
-    deletarRegistro(id) {
-      const vm = this;
-      fetch(`${BASE_URL}/veiculos/${id}`, {
-        method: "delete",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        }
-      }).then(response => {
-        window.console.log(response);
-        vm.carregarDados();
-      });
-    }
   }
 };
 </script>
