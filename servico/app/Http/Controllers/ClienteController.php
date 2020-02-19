@@ -37,7 +37,7 @@ class clienteController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'password' => 'required'
+
         ]);
 
         $cliente = Cliente::create($data);

@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
       <div class="row">
-          <h4>{{ textosCard.titulo }}</h3>
+          <h4>{{ textosCard.titulo }}</h4>
       </div>
       <div class="col-12 mt-4">
           <input class="col-sm-12 bx-none bt-none f-125" placeholder="Modelo" v-model="veiculo.Modelo" type="text"/>

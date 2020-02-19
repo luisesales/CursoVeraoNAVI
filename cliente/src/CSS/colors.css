@@ -16,6 +16,9 @@
 .bg-primary{
     background-color: rgba(13, 93, 128, 1) !important
 }
+.bg-black{
+    background-color: black !important
+}
 
 
 .text-red{
@@ -24,4 +27,5 @@
 .text-green{
     color: rgba(0, 114, 25, 1) !important;
 }
+
 

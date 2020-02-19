@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Veiculo;
 use App\Models\Venda;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,9 +17,9 @@ class VendaController extends Controller
      */
     public function index()
     {
+        
         return response()->json(Venda::orderBy('updated_at')->paginate(20));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +43,9 @@ class VendaController extends Controller
             'veiculo_id' => 'required',
             'cliente_id' => 'required'
         ]);
-
+        $veiculo = Veiculo::find($data['veiculo_id']);
+        $veiculo->vendido = true;
+        $veiculo->save();
         $venda = Venda::create($data);
         return response()->json($venda);
     }

@@ -16,8 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('/clientes', 'ClienteController');
-Route::apiResource('/veiculos', 'VeiculoController');
-Route::apiResource('/vendedores', 'VendedorController');
-Route::apiResource('/vendas', 'VendaController');
-Route::apiResource('/promocoes', 'PromocaoController');
+Route::apiResource('/clientes', 'ClienteController')->middleware('cors');
+Route::apiResource('/veiculos', 'VeiculoController')->middleware('cors');
+Route::apiResource('/vendedores', 'VendedorController')->middleware('cors');
+Route::apiResource('/vendas', 'VendaController')->middleware('cors');
+Route::get('/veiculosAll','VeiculoController@indexAll')->middleware('cors');
