@@ -1,15 +1,15 @@
 <template class="bg-night">
-    <div class="container-fluid bg-night pt-3 h-100">
-      <div class="row">
-        <div class="col-sm-4 text-light font-weight-bold">
-          <div class="row ml-1">
-            <h4>VEÍCULOS</h4>
-            <button class="ml-4 col-auto text-light b-none btn btn-primary font-weight-bold">
-              <div @click="showCriarVeiculoModal()" class="col-auto">NOVO VEÍCULO</div>
-            </button>
-          </div>
+  <div class="container-fluid bg-night pt-3 h-100">
+    <div class="row">
+      <div class="col-sm-4 text-light font-weight-bold">
+        <div class="row ml-1">
+          <h4>VEÍCULOS</h4>
+          <button class="ml-4 col-auto text-light b-none btn btn-primary font-weight-bold">
+            <div @click="showCriarVeiculoModal()" class="col-auto">NOVO VEÍCULO</div>
+          </button>
         </div>
-        <!-- <div class="border rounded-pill bg-white col-sm-auto ml-auto mr-3">
+      </div>
+      <!-- <div class="border rounded-pill bg-white col-sm-auto ml-auto mr-3">
           <input
             type="text"
             class="by-none bl-none h-100 bg-white my-auto pl-3 pr-5"
@@ -19,85 +19,197 @@
           <button type="submit" class="bg-white b-none">
             <a class="search align-middle"></a>
           </button>
-        </div> -->
-      </div>
-      <div id="containerCards">
-        <template v-for="item in items.data">
-          <CardVeiculos :key="item.id" :id="item.id" />
-        </template>
-      </div>
+      </div>-->
+    </div>
+    <div id="containerCards">
+      <template v-for="item in items.data">
+        <CardVeiculos v-on:editarVeiculo="(showEditarVeiculoModal($event))" :key="item.id" :item="item" />
+      </template>
+    </div>
 
-      <div class="row d-flex justify-content-center mt-5 text-light">
-        <ul class="pagination">
-          <li
-            :key="i"
-            v-for="i in items.last_page"
-            class="page-item"
-            :class="{ active: i === paginaAtual}"
-          >
-            <a href="javascript:void(0);" class="page-link" @click="atribuirPaginaAtual(i)">{{ i }}</a>
-          </li>
-        </ul>
-      </div>
-      <modal id="modalVeiculo" name="criar-veiculo-modal">
+    <div class="row d-flex justify-content-center mt-5 text-light">
+      <ul class="pagination">
+        <li
+          :key="i"
+          v-for="i in items.last_page"
+          class="page-item"
+          :class="{ active: i === paginaAtual}"
+        >
+          <a href="javascript:void(0);" class="page-link" @click="atribuirPaginaAtual(i)">{{ i }}</a>
+        </li>
+      </ul>
+    </div>
+    <modal id="modalVeiculo" name="criar-veiculo-modal">
       <form method="POST">
         <div class="form-group">
           <div class="container-fluid mx-3 my-2 h-auto w-auto">
-            <div class="row"><h4 style="color: black;">Criar Veículo</h4>
-             <button type="button" class="close ml-auto" @click="hideCriarVeiculoModal()" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <div class="row">
+              <h4 style="color: black;">Criar Veículo</h4>
+              <button
+                type="button"
+                class="close ml-auto"
+                @click="hideCriarVeiculoModal()"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="row mt-4">
               <input
                 type="text"
                 name="modelo"
                 placeholder="Modelo"
-                v-model="veiculo.modelo" id="modelo"
+                v-model="veiculo.modelo"
+                id="modelo"
                 class="bx-none bt-none w-100"
               />
             </div>
             <div class="row mt-2">
-              <input type="text" name="fabricante" placeholder="Fabricante" v-model="veiculo.fabricante" id="fabricante"  class="bx-none bt-none w-100" />
+              <input
+                type="text"
+                name="fabricante"
+                placeholder="Fabricante"
+                v-model="veiculo.fabricante"
+                id="fabricante"
+                class="bx-none bt-none w-100"
+              />
             </div>
             <div class="row mt-2">
               <input
                 type="text"
                 name="ano"
                 placeholder="Ano de Fabricação"
-                v-model="veiculo.ano_fabricacao" id="ano_fabricacao" 
+                v-model="veiculo.ano_fabricacao"
+                id="ano_fabricacao"
                 class="bx-none bt-none w-100 col-md-3 p-0"
               />
               <input
                 type="text"
                 name="placa"
                 placeholder="Placa"
-                v-model="veiculo.placa" id="placa"
+                v-model="veiculo.placa"
+                id="placa"
                 class="bx-none bt-none w-100 col-md-4 offset-md-1 mt-md-0 mt-2 p-0"
               />
               <input
                 type="text"
                 name="uf"
                 placeholder="UF"
-                v-model="veiculo.uf" id="uf"
-                class="bx-none bt-none w-100 col-md-3  offset-md-1 p-0 mt-md-0 mt-2" 
+                v-model="veiculo.uf"
+                id="uf"
+                class="bx-none bt-none w-100 col-md-3 offset-md-1 p-0 mt-md-0 mt-2"
               />
-              </div>
+            </div>
             <div class="row mt-2">
-              <input type="price" name="valor" placeholder="Preço" class="bx-none bt-none w-50"  v-model="veiculo.valor" id="valor"/> <span class="align-bottom">Reais</span>
+              <input
+                type="price"
+                name="valor"
+                placeholder="Preço"
+                class="bx-none bt-none w-50"
+                v-model="veiculo.valor"
+                id="valor"
+              />
+              <span class="align-bottom">Reais</span>
             </div>
             <div class="row mt-3 align-baseline">
-              <button @click.prevent="criarVeiculo" class="col-auto btn btn-primary bg-primary ml-auto">Atualizar</button>
+              <button
+                @click.prevent="criarVeiculo"
+                class="col-auto btn btn-primary bg-primary ml-auto"
+              >Criar</button>
             </div>
           </div>
-           </div>
+        </div>
       </form>
     </modal>
-    </div>
+    <modal id="modalVeiculoEdit" name="editar-veiculo-modal">
+      <form method="POST">
+        <div class="form-group">
+          <div class="container-fluid mx-3 my-2 h-auto w-auto">
+            <div class="row">
+              <h4 style="color: black;">Editar Veículo</h4>
+              <button
+                type="button"
+                class="close ml-auto"
+                @click="hideEditarVeiculoModal()"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="row mt-4">
+              <input
+                type="text"
+                name="modelo"
+                placeholder="Modelo"
+                v-model="veiculo.modelo"
+                id="modelo"
+                class="bx-none bt-none w-100"
+              />
+            </div>
+            <div class="row mt-2">
+              <input
+                type="text"
+                name="fabricante"
+                placeholder="Fabricante"
+                v-model="veiculo.fabricante"
+                id="fabricante"
+                class="bx-none bt-none w-100"
+              />
+            </div>
+            <div class="row mt-2">
+              <input
+                type="text"
+                name="ano"
+                placeholder="Ano de Fabricação"
+                v-model="veiculo.ano_fabricacao"
+                id="ano_fabricacao"
+                class="bx-none bt-none w-100 col-md-3 p-0"
+              />
+              <input
+                type="text"
+                name="placa"
+                placeholder="Placa"
+                v-model="veiculo.placa"
+                id="placa"
+                class="bx-none bt-none w-100 col-md-4 offset-md-1 mt-md-0 mt-2 p-0"
+              />
+              <input
+                type="text"
+                name="uf"
+                placeholder="UF"
+                v-model="veiculo.uf"
+                id="uf"
+                class="bx-none bt-none w-100 col-md-3 offset-md-1 p-0 mt-md-0 mt-2"
+              />
+            </div>
+            <div class="row mt-2">
+              <input
+                type="price"
+                name="valor"
+                placeholder="Preço"
+                class="bx-none bt-none w-50"
+                v-model="veiculo.valor"
+                id="valor"
+              />
+              <span class="align-bottom">Reais</span>
+            </div>
+            <div class="row mt-3 align-baseline">
+              <button
+                @click.prevent="editarVeiculo"
+                class="col-auto btn btn-primary bg-primary ml-auto"
+              >Atualizar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </modal>
+  </div>
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 import CardVeiculos from "../Cards/CardVeiculos";
 import VModal from "vue-js-modal";
 import Swal from "sweetalert2";
@@ -111,6 +223,7 @@ export default {
   data() {
     return {
       veiculo: {
+        id: null,
         modelo: null,
         fabricante: null,
         ano_fabricacao: null,
@@ -138,6 +251,27 @@ export default {
     }
   },
   methods: {
+      editarVeiculo() {
+      console.log(JSON.stringify(this.veiculo));
+      console.log(this.veiculo.id);
+      fetch(`${BASE_URL}/veiculos/${this.veiculo.id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+
+        //make sure to serialize your JSON body
+        body: JSON.stringify(this.veiculo)
+      }).then(response => {
+        window.console.log(response);
+
+        Swal.fire("Veiculo editado com sucesso!", "", "success").then(
+          this.hideEditarVeiculoModal()
+        );
+        //return this.$router.push({ name: "home" });
+      });
+    },
     criarVeiculo() {
       console.log(JSON.stringify(this.veiculo));
       fetch(`${BASE_URL}/veiculos`, {
@@ -161,6 +295,14 @@ export default {
     },
     hideCriarVeiculoModal() {
       this.$modal.hide("criar-veiculo-modal");
+    },
+    showEditarVeiculoModal(veiculo) {
+      this.veiculo = veiculo
+      console.log(this.veiculo);
+      this.$modal.show("editar-veiculo-modal");
+    },
+    hideEditarVeiculoModal() {
+      this.$modal.hide("editar-veiculo-modal");
     },
     carregarDados() {
       const vm = this;

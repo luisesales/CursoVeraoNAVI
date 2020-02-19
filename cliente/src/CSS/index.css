@@ -1,9 +1,5 @@
 router-link {cursor: pointer !important;}
 
-
- body{
-   height: 100vh;
- }
 .search{
     background-image: url('./../assets/lupa.svg');
     background-size: contain !important;

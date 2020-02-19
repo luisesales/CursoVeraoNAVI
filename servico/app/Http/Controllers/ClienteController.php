@@ -39,7 +39,6 @@ class clienteController extends Controller
             'address' => 'required',
 
         ]);
-
         $cliente = Cliente::create($data);
         return $cliente;
     }
