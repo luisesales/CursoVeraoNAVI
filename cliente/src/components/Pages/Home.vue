@@ -45,11 +45,11 @@
         <div class="form-group">
           <div class="container-fluid mx-3 my-2 h-auto w-auto">
             <div class="row">
-              <h4 style="color: black;">Criar Veículo</h4>
+              <h4 style="color: black;">Editar Veículo</h4>
               <button
                 type="button"
                 class="close ml-auto mb-auto"
-                @click="hideCriarVeiculoModal()"
+                @click="hideEditarVeiculoModal()"
                 data-dismiss="modal"
                 aria-label="Close"
               >
@@ -60,7 +60,8 @@
               <input
                 type="text"
                 name="modelo"
-                placeholder="Modelo"                
+                placeholder="Modelo"
+                v-model="veiculo.modelo"
                 id="modelo"
                 class="bx-none bt-none w-100"
               />
@@ -69,7 +70,8 @@
               <input
                 type="text"
                 name="fabricante"
-                placeholder="Fabricante"                
+                placeholder="Fabricante"
+                v-model="veiculo.fabricante"
                 id="fabricante"
                 class="bx-none bt-none w-100"
               />
@@ -78,21 +80,24 @@
               <input
                 type="text"
                 name="ano"
-                placeholder="Ano de Fabricação"              
+                placeholder="Ano de Fabricação"
+                v-model="veiculo.ano_fabricacao"
                 id="ano_fabricacao"
                 class="bx-none bt-none w-100 col-md-3 p-0"
               />
               <input
                 type="text"
                 name="placa"
-                placeholder="Placa"                
+                placeholder="Placa"
+                v-model="veiculo.placa"
                 id="placa"
                 class="bx-none bt-none w-100 col-md-4 offset-md-1 mt-md-0 mt-2 p-0"
               />
               <input
                 type="text"
                 name="uf"
-                placeholder="UF"                
+                placeholder="UF"
+                v-model="veiculo.uf"
                 id="uf"
                 class="bx-none bt-none w-100 col-md-3 offset-md-1 p-0 mt-md-0 mt-2"
               />
@@ -102,7 +107,8 @@
                 type="price"
                 name="valor"
                 placeholder="Preço"
-                class="bx-none bt-none w-50"                
+                class="bx-none bt-none w-50"
+                v-model="veiculo.valor"
                 id="valor"
               />
               <span class="align-bottom">Reais</span>
@@ -236,19 +242,10 @@ export default {
     this.carregarDados();
   },
   computed: {
-    chavesCabecalho() {
-      if (this.items.data.length > 0) {
-        const vm = this;
-        return Object.keys(this.items.data[0]).filter(function(chave) {
-          return vm.camposExcluidos.indexOf(chave) === -1;
-        });
-      }
 
-      return [];
-    },
      itensFiltrados: function(){      
       return this.items.data.filter((item) =>{ 
-         return item.modelo.match(this.search)})
+         return item.modelo.toLowerCase().match(this.search.toLowerCase())})
      }
   },
   methods: {
