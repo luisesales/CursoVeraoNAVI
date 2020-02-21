@@ -20,7 +20,7 @@ const router = new VueRouter({
         {
             path: '/vendas',
             name: 'vendas',
-            component: Vendas
+            component: Vendas,
         }
     ]
 });

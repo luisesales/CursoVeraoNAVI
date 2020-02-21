@@ -3,10 +3,10 @@
 <Table/>
 </div>
 </template>
-<<script>
+<script>
 import Table from './../ApiTable'
 export default {
-    name : CardVendas
+    name : "CardVendas",
     components : {Table}
 }
 </script>

@@ -1,15 +1,13 @@
-<template class="bg-night">
+<template >
   <div class="container-fluid bg-night pt-3 h-100">
     <div class="row">
-      <div class="col-sm-4 text-light font-weight-bold">
-        <div class="row ml-1">
-          <h4>VEÍCULOS</h4>
-          <button class="ml-4 col-auto text-light b-none btn btn-primary font-weight-bold">
+      <div class="text-light font-weight-bold col-md-6 row mx-sm-0 px-0">
+          <h4 class="col-sm-auto mx-sm-0 mx-auto my-auto">VEÍCULOS</h4>
+          <button class=" col-auto offset-auto pb-1 text-light b-none btn btn-primary font-weight-bold mx-sm-0 mx-auto mt-sm-0 mt-2">
             <div @click="showCriarVeiculoModal()" class="col-auto">NOVO VEÍCULO</div>
           </button>
-        </div>
       </div>
-      <!-- <div class="border rounded-pill bg-white col-sm-auto ml-auto mr-3">
+      <div class="border rounded-pill bg-white col-auto ml-sm-auto mr-sm-3 mx-auto mt-md-0 mt-4">
           <input
             type="text"
             class="by-none bl-none h-100 bg-white my-auto pl-3 pr-5"
@@ -19,7 +17,7 @@
           <button type="submit" class="bg-white b-none">
             <a class="search align-middle"></a>
           </button>
-      </div>-->
+      </div>
     </div>
     <div id="containerCards">
       <template v-for="item in items.data">
@@ -52,7 +50,7 @@
               <h4 style="color: black;">Criar Veículo</h4>
               <button
                 type="button"
-                class="close ml-auto"
+                class="close ml-auto mb-auto"
                 @click="hideCriarVeiculoModal()"
                 data-dismiss="modal"
                 aria-label="Close"
@@ -64,8 +62,7 @@
               <input
                 type="text"
                 name="modelo"
-                placeholder="Modelo"
-                v-model="veiculo.modelo"
+                placeholder="Modelo"                
                 id="modelo"
                 class="bx-none bt-none w-100"
               />
@@ -74,8 +71,7 @@
               <input
                 type="text"
                 name="fabricante"
-                placeholder="Fabricante"
-                v-model="veiculo.fabricante"
+                placeholder="Fabricante"                
                 id="fabricante"
                 class="bx-none bt-none w-100"
               />
@@ -84,24 +80,21 @@
               <input
                 type="text"
                 name="ano"
-                placeholder="Ano de Fabricação"
-                v-model="veiculo.ano_fabricacao"
+                placeholder="Ano de Fabricação"              
                 id="ano_fabricacao"
                 class="bx-none bt-none w-100 col-md-3 p-0"
               />
               <input
                 type="text"
                 name="placa"
-                placeholder="Placa"
-                v-model="veiculo.placa"
+                placeholder="Placa"                
                 id="placa"
                 class="bx-none bt-none w-100 col-md-4 offset-md-1 mt-md-0 mt-2 p-0"
               />
               <input
                 type="text"
                 name="uf"
-                placeholder="UF"
-                v-model="veiculo.uf"
+                placeholder="UF"                
                 id="uf"
                 class="bx-none bt-none w-100 col-md-3 offset-md-1 p-0 mt-md-0 mt-2"
               />
@@ -111,8 +104,7 @@
                 type="price"
                 name="valor"
                 placeholder="Preço"
-                class="bx-none bt-none w-50"
-                v-model="veiculo.valor"
+                class="bx-none bt-none w-50"                
                 id="valor"
               />
               <span class="align-bottom">Reais</span>
@@ -135,7 +127,7 @@
               <h4 style="color: black;">Editar Veículo</h4>
               <button
                 type="button"
-                class="close ml-auto"
+                class="close ml-auto mb-auto"
                 @click="hideEditarVeiculoModal()"
                 data-dismiss="modal"
                 aria-label="Close"
@@ -270,6 +262,7 @@ export default {
       });
     },
     editarVeiculo() {
+      const vm = this;
       console.log(JSON.stringify(this.veiculo));
       console.log(this.veiculo.id);
       fetch(`${BASE_URL}/veiculos/${this.veiculo.id}`, {
@@ -285,6 +278,7 @@ export default {
         window.console.log(response);
 
         Swal.fire("Veiculo editado com sucesso!", "", "success").then(
+          vm.carregarDados(),
           this.hideEditarVeiculoModal(),
           (this.veiculo = {
             modelo: null,
@@ -297,6 +291,7 @@ export default {
       });
     },
     criarVeiculo() {
+      const vm = this;
       console.log(JSON.stringify(this.veiculo));
       fetch(`${BASE_URL}/veiculos`, {
         method: "post",
@@ -310,6 +305,7 @@ export default {
         window.console.log(response);
 
         Swal.fire("Veiculo criado com sucesso!", "", "success").then(
+          vm.carregarDados(),
           this.hideCriarVeiculoModal(),
           (this.veiculo = {
             modelo: null,
@@ -327,7 +323,7 @@ export default {
       this.$modal.hide("criar-veiculo-modal");
     },
     showEditarVeiculoModal(veiculo) {
-      this.veiculo = veiculo;
+      this.veiculo = Object.assign({}, veiculo);
       console.log(this.veiculo);
       this.$modal.show("editar-veiculo-modal");
     },

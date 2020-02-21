@@ -1,5 +1,5 @@
 <template>
-  <div class="text-red mx-1 mt-4 col-md-5 bg-white">
+  <div class="text-red mx-1 mt-4 col-md-5 bg-white border  rounded">
     <div class="col-auto my-1 mx-1 py-3">
       <div class="row justify-content-end" @click="confirmarExclusao(item.id)">
         <button class="trash b-none bg-white"></button>
@@ -14,10 +14,11 @@
         <p>{{item.fabricante}}</p>
       </div>
       <div class="row f-125 mr-1">
+      
         <!-- <div class="col-sm-6"><p>{{item.placa}}</p></div>   -->
         <div class="col-sm-6 col-auto ml-auto">
           <div class="row justify-content-end">
-            <!-- <div class="mx-2"><p>{{item.uf}} - {{i.ano}}</p></div>  -->
+            <!-- <div class="mx-2"><p> {{item.uf}}- {{i.ano_fabricacao}}</p></div>  -->
           </div>
         </div>
       </div>
@@ -35,7 +36,7 @@
             >Editar</button>
           </div>
         </div>
-        <div class="col-md-6 col-12 mt-md-0 mt-2 text-white col-auto">
+        <div class="col-md-6 col-12 mt-md-0 mt-4 text-white col-auto">
           <div class="d-flex flex-column ml-auto">
             <button @click="show()" class="pr-auto btn btn-success rounded-pill bg-green">Vender</button>
           </div>

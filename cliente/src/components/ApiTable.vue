@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 <template>
     <div class="table-responsive push">
         <table class="table table-striped">
@@ -32,7 +31,6 @@ import Swal from "sweetalert2";
 </template>
 
 <script>
-    import Swal from 'sweetalert2'
     const BASE_URL = "http://localhost:8000/api"
     export default {
         name: "ApiTable",

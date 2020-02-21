@@ -1,14 +1,13 @@
 <template>
   <div class="page" id="app">
     <Navbar />
-    <Home />
+    <router-view />
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import Navbar from "./components/Layout/Navbar";
-import Home from "./components/Pages/Home";
 import Router from "vue-router";
 
 Vue.use(Router);
@@ -16,9 +15,8 @@ Vue.use(Router);
 export default {
   name: "App",
   components: {
-    Navbar,
-    Home
-  }
+    Navbar  
+    }
 };
 </script>
 
