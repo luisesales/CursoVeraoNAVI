@@ -14,10 +14,10 @@ class VeiculoController extends Controller
      */
     public function index()
     {
-        return response()->json(Veiculo::where('vendido','=',false)->orderBy('fabricante')->paginate(20));
+        return response()->json(Veiculo::where('vendido','=',false)->orderBy('fabricante')->paginate(10));
     }
     public function indexAll(){
-        return response()->json(Veiculo::orderBy('fabricante')->paginate(20));
+        return response()->json(Veiculo::orderBy('fabricante')->paginate(10));
     }
     /**
      * Show the form for creating a new resource.

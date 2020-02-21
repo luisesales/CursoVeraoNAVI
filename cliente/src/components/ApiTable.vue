@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 <template>
     <div class="table-responsive push">
         <table class="table table-striped">
@@ -32,27 +31,14 @@ import Swal from "sweetalert2";
 </template>
 
 <script>
-    import Swal from 'sweetalert2'
+    //import Swal from 'sweetalert2'
     const BASE_URL = "http://localhost:8000/api"
     export default {
         name: "ApiTable",
-        props: {
-            camposExcluidos: {
-                type: Array,
-                default() {
-                    return []
-                }
-            },
-            recurso: {
-                type: String,
-                required: true
-            },
-            traducaoCampos: {
-                type: Object,
-                default() {
-                    return {}
-                }
-            }
+        venda = {
+            cliente : null,
+            veiculo : null,
+            valor : null,  
         },
         data() {
             return {
@@ -80,7 +66,7 @@ import Swal from "sweetalert2";
         methods: {
             carregarDados() {
                     const vm = this
-                    fetch(`${BASE_URL}/${this.recurso}?page=${this.paginaAtual}`)
+                    fetch(`${BASE_URL}/vendas?page=${this.paginaAtual}`)
                         .then(function(response) {
                             response.json()
                                 .then(function (items) {
@@ -90,24 +76,8 @@ import Swal from "sweetalert2";
             },
             atribuirPaginaAtual(pagina) {
                 this.paginaAtual = pagina
-
                 this.carregarDados()
             },
-            deletarRegistro(id) {
-                const vm = this
-                fetch(`${BASE_URL}/papeis/${id}`, {
-                    method: "delete",
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                })
-                    .then( (response) => {
-                        window.console.log(response)
-                        vm.carregarDados()
-                    });
-            },
-            
         }
     }
 </script>

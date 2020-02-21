@@ -21,6 +21,7 @@
           </button>
       </div>-->
     </div>
+     <h1 v-if="items.data.length == 0">Nenhum Veículo Disponível</h1>
     <div id="containerCards">
       <template v-for="item in items.data">
         <CardVeiculos
@@ -283,7 +284,6 @@ export default {
         body: JSON.stringify(this.veiculo)
       }).then(response => {
         window.console.log(response);
-
         Swal.fire("Veiculo editado com sucesso!", "", "success").then(
           this.hideEditarVeiculoModal(),
           (this.veiculo = {
@@ -291,12 +291,14 @@ export default {
             fabricante: null,
             ano_fabricacao: null,
             valor: null
-          })
+          }),
+          
         );
         //return this.$router.push({ name: "home" });
       });
     },
     criarVeiculo() {
+      let vm = this;
       console.log(JSON.stringify(this.veiculo));
       fetch(`${BASE_URL}/veiculos`, {
         method: "post",
@@ -308,7 +310,6 @@ export default {
         body: JSON.stringify(this.veiculo)
       }).then(response => {
         window.console.log(response);
-
         Swal.fire("Veiculo criado com sucesso!", "", "success").then(
           this.hideCriarVeiculoModal(),
           (this.veiculo = {
@@ -316,7 +317,8 @@ export default {
             fabricante: null,
             ano_fabricacao: null,
             valor: null
-          })
+          }),
+          vm.carregarDados()
         );
       });
     },
@@ -359,5 +361,9 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+ h1{
+  background-color: rgba(255, 255, 255, 0.062);
+  text-align: center;
 }
 </style>

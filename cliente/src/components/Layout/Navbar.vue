@@ -18,7 +18,7 @@
       <div class="collapse navbar-collapse pb-1" id="navbarNav">
         <ul class="navbar-nav text-light">
           <li class="nav-item">
-            <router-link to="/home" class="nav-link">Veiculos</router-link>
+            <router-link to="/" class="nav-link">Veiculos</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/vendas" class="nav-link">Vendas</router-link>

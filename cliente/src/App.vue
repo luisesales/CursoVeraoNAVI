@@ -1,23 +1,23 @@
 <template>
   <div class="page" id="app">
     <Navbar />
-    <Home />
+    <router-view to="/"/>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
+//import Vue from "vue";
 import Navbar from "./components/Layout/Navbar";
-import Home from "./components/Pages/Home";
-import Router from "vue-router";
+//import Home from "./components/Pages/Home";
+//import Router from "vue-router";
 
-Vue.use(Router);
+//Vue.use(Router);
 
 export default {
   name: "App",
   components: {
     Navbar,
-    Home
+    //Home
   }
 };
 </script>
@@ -28,7 +28,6 @@ export default {
 @import "./CSS/colors.css";
 @import "./CSS/module.css";
 #app {
-  
   background-color: rgb(32, 32, 32);
   color: white;
   min-height: 100vh;
