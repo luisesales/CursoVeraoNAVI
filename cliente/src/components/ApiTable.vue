@@ -92,6 +92,7 @@
                 this.carregarDados()
             },
             deletarRegistro(id) {
+                
                 const vm = this
                 fetch(`${BASE_URL}/papeis/${id}`, {
                     method: "delete",

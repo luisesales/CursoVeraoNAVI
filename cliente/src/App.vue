@@ -11,6 +11,9 @@ import Navbar from "./components/Layout/Navbar";
 import Router from "vue-router";
 
 Vue.use(Router);
+Vue.filter('toUpperCase',function(value){
+  return value.toUpperCase();
+})
 
 export default {
   name: "App",

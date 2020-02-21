@@ -1,26 +1,24 @@
 <template >
   <div class="container-fluid bg-night pt-3 h-100">
     <div class="row">
-      <div class="text-light font-weight-bold col-md-6 row mx-sm-0 px-0">
+      <div class="text-light font-weight-bold col-md-6 row mx-0 px-0">
           <h4 class="col-sm-auto mx-sm-0 mx-auto my-auto">VEÍCULOS</h4>
-          <button class=" col-auto offset-auto pb-1 text-light b-none btn btn-primary font-weight-bold mx-sm-0 mx-auto mt-sm-0 mt-2">
+          <button class=" col-auto offset-auto pb-1 text-light b-none btn btn-primary font-weight-bold mx-sm-0 mx-auto mt-sm-0 mt-3">
             <div @click="showCriarVeiculoModal()" class="col-auto">NOVO VEÍCULO</div>
           </button>
       </div>
       <div class="border rounded-pill bg-white col-auto ml-sm-auto mr-sm-3 mx-auto mt-md-0 mt-4">
           <input
             type="text"
-            class="by-none bl-none h-100 bg-white my-auto pl-3 pr-5"
-            placeholder="Pesquisar"
+            class="b-none h-100 bg-white my-auto pl-3 pr-5"
+            placeholder="Pesquisar Modelos"
+            v-model="search"
             name="search"
-          />
-          <button type="submit" class="bg-white b-none">
-            <a class="search align-middle"></a>
-          </button>
+          />         
       </div>
     </div>
     <div id="containerCards">
-      <template v-for="item in items.data">
+      <template v-for="item in itensFiltrados">
         <CardVeiculos
           v-on:deletarRegistro="deletarRegistro($event)"
           v-on:editarVeiculo="(showEditarVeiculoModal($event))"
@@ -224,12 +222,14 @@ export default {
         modelo: null,
         fabricante: null,
         ano_fabricacao: null,
-        valor: null
+        valor: null      
       },
       items: {
         data: []
+        
       },
-      paginaAtual: 1
+      paginaAtual: 1,
+      search: ''
     };
   },
   mounted() {
@@ -245,7 +245,11 @@ export default {
       }
 
       return [];
-    }
+    },
+     itensFiltrados: function(){      
+      return this.items.data.filter((item) =>{ 
+         return item.modelo.match(this.search)})
+     }
   },
   methods: {
     deletarRegistro(id) {
@@ -345,7 +349,7 @@ export default {
       this.paginaAtual = pagina;
 
       this.carregarDados();
-    }
+    },    
   }
 };
 </script>

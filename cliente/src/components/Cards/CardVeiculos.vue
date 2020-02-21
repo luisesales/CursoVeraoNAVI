@@ -6,19 +6,18 @@
       </div>
       <div class="row font-weight-bold f-150">
         <div class="mx-auto">
-          <p>{{item.modelo}}</p>
+          <p>{{item.modelo | toUpperCase}}</p>
         </div>
       </div>
       <hr />
       <div class="row pl-3 f-125">
         <p>{{item.fabricante}}</p>
       </div>
-      <div class="row f-125 mr-1">
-      
-        <!-- <div class="col-sm-6"><p>{{item.placa}}</p></div>   -->
+      <div class="row f-125 mr-1">      
+        <div class="col-sm-6"><p>{{item.placa}}</p></div>  
         <div class="col-sm-6 col-auto ml-auto">
           <div class="row justify-content-end">
-            <!-- <div class="mx-2"><p> {{item.uf}}- {{i.ano_fabricacao}}</p></div>  -->
+            <div class="mx-2"><p> {{item.uf}} - <!--{{i.ano_fabricacao}}--></p></div> 
           </div>
         </div>
       </div>
