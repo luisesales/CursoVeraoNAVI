@@ -10,6 +10,8 @@ class Veiculo extends Model
         'modelo',
         'fabricante',
         'ano_fabricacao',
-        'valor'
+        'valor',
+        'placa',
+        'uf'
     ];
 }

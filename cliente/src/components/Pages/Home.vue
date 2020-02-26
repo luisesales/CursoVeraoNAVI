@@ -3,8 +3,8 @@
     <div class="row">
       <div class="text-light font-weight-bold col-md-6 row mx-0 px-0">
           <h4 class="col-sm-auto mx-sm-0 mx-auto my-auto">VEÍCULOS</h4>
-          <button class=" col-auto offset-auto pb-1 text-light b-none btn btn-primary font-weight-bold mx-sm-0 mx-auto mt-sm-0 mt-3">
-            <div @click="showCriarVeiculoModal()" class="col-auto">NOVO VEÍCULO</div>
+          <button @click="showCriarVeiculoModal()" class=" col-auto offset-auto pb-1 text-light b-none btn btn-primary font-weight-bold mx-sm-0 mx-auto mt-sm-0 mt-3">
+            <div  class="col-auto">NOVO VEÍCULO</div>
           </button>
       </div>
       <div class="border rounded-pill bg-white col-auto ml-sm-auto mr-sm-3 mx-auto mt-md-0 mt-4">
@@ -228,7 +228,9 @@ export default {
         modelo: null,
         fabricante: null,
         ano_fabricacao: null,
-        valor: null      
+        valor: null,
+        placa : null,
+        uf : null      
       },
       items: {
         data: []
