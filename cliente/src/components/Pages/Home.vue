@@ -309,7 +309,7 @@ export default {
   methods: {
     criarVenda(cliente) {
       let vm = this;
-      console.log(cliente.id);
+      console.log(cliente);
       this.venda.vendedor_id = this.vendedor.id;
       this.venda.veiculo_id = this.veiculo.id;
       this.venda.cliente_id = cliente.id;
@@ -321,7 +321,7 @@ export default {
           "Content-Type": "application/json"
         },
         //make sure to serialize your JSON body
-        body: JSON.stringify(this.vendas)
+        body: JSON.stringify(this.venda)
       }).then(response => {
         window.console.log(response);
         Swal.fire("Venda efetuada", "", "success").then(
