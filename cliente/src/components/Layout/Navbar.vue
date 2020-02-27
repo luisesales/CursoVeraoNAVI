@@ -23,6 +23,9 @@
           <li class="nav-item">
             <router-link to="/vendas" class="nav-link">Vendas</router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/clientes" class="nav-link">Clientes</router-link>
+          </li>
         </ul>
         <div class="col-auto text-light ml-auto py-auto">
           <div class="row">
@@ -43,5 +46,3 @@ export default {
   name: "Navbar"
 };
 </script>
-      
-<!--Trocar todos os <a> por <router-link> e os adptar -->

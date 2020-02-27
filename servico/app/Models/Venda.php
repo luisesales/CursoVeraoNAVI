@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
-use App\Vendedor;
-use App\Cliente;
-use App\Veiculo;
+use App\Models\Vendedor;
+use App\Models\Cliente;
+use App\Models\Veiculo;
 
 class Venda extends Model
 {

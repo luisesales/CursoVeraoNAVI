@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <template v-for="item in items.data">
       <CardVendas :key="item.id" :item="item" />
@@ -17,6 +18,56 @@ export default {
   },
   data() {
     return {    
+=======
+  <div>    
+     <div class="table-responsive push mt-4">
+        <table class="table table-striped ">
+            <thead class=" text-light ">
+                <tr>
+                  <th>Veiculo</th>
+                  <th>Valor em R$</th>
+                  <th>Data</th>
+                  <th>Comprador</th>
+                  <th>Vendedor</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                <template v-for="item in items.data">
+                  <tr :key="item.id" class="mt-2" :item="item">
+                    <th>{{item.veiculo.modelo}}</th>
+                    <th>{{item.veiculo.valor}}</th>
+                    <th>{{item.created_at}}</th>
+                    <th>{{item.cliente.name}}</th>
+                    <th>{{item.vendedor.name}}</th>
+                  </tr>
+                </template>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li :key="i" v-for="i in items.last_page" class="page-item" :class="{ active: i === paginaAtual}">
+                    <a href="javascript:void(0);" class="page-link" @click="atribuirPaginaAtual(i)">
+                        {{ i }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+  
+</template>
+
+<script>
+//import CardVendas from "../Cards/CardVendas";
+const BASE_URL = "http://localhost:8000/api";
+export default {
+  name: "Vendas",
+  components: {
+    //CardVendas
+  },
+  data() {
+    return {
+>>>>>>> Homolog
       items: {
         data: []
       },
@@ -26,10 +77,17 @@ export default {
   mounted() {
     this.carregarDados();
   },
+<<<<<<< HEAD
   methods : {
       carregarDados() {
       const vm = this;
       fetch(`${BASE_URL}/vendas/?page=${this.paginaAtual}`).then(function(
+=======
+  methods: {
+    carregarDados() {
+      const vm = this;
+      fetch(`${BASE_URL}/vendasDados/?page=${this.paginaAtual}`).then(function(
+>>>>>>> Homolog
         response
       ) {
         response.json().then(function(items) {
@@ -40,7 +98,10 @@ export default {
     },
     atribuirPaginaAtual(pagina) {
       this.paginaAtual = pagina;
+<<<<<<< HEAD
 
+=======
+>>>>>>> Homolog
       this.carregarDados();
     }
   }

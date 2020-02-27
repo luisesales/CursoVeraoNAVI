@@ -42,6 +42,8 @@ class VeiculoController extends Controller
             'fabricante' => 'required',
             'ano_fabricacao' => 'required',
             'valor' => 'required',
+            'placa' => 'required',
+            'uf' => 'required'
         ]);
 
         $veiculo = Veiculo::create($data);
@@ -85,7 +87,9 @@ class VeiculoController extends Controller
             'modelo' => 'required',
             'fabricante' => 'required',
             'ano_fabricacao' => 'required',
-            'valor' => 'required'
+            'valor' => 'required',
+            'placa' => 'required',
+            'uf' => 'required'
         ]);
         $veiculo = Veiculo::findOrFail($id);
         $veiculo->update($data);

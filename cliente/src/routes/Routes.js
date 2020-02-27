@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../components/Pages/Home"
 import Vendas from "../components/Pages/Vendas"
+import Clientes from "../components/Pages/Clientes"
 
 
 
@@ -19,7 +20,12 @@ const router = new VueRouter({
         {
             path: '/vendas',
             name: 'vendas',
-            component: Vendas
+            component: Vendas,
+        },
+        {
+            path: '/clientes',
+            name: 'clientes',
+            component: Clientes,
         }
     ]
 });
