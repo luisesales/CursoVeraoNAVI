@@ -277,20 +277,20 @@ export default {
       cliente: {
         id: null,
         cpf: null,
-        email : null,
-        phone : null,
-        address : null,
+        email: null,
+        phone: null,
+        address: null
       },
       items: {
         data: []
       },
-      vendedor : {
-        id : 1
+      vendedor: {
+        id: 1
       },
-      venda : {
-        vendedor_id : null,
-        veiculo_id : null,
-        cliente_id : null
+      venda: {
+        vendedor_id: null,
+        veiculo_id: null,
+        cliente_id: null
       },
       paginaAtual: 1,
       search: ""
@@ -307,12 +307,13 @@ export default {
     }
   },
   methods: {
-    criarVenda(){
+    criarVenda(cliente) {
       let vm = this;
+      console.log(cliente.id);
       this.venda.vendedor_id = this.vendedor.id;
       this.venda.veiculo_id = this.veiculo.id;
-      this.venda.cliente_id = this.cliente.id
-      console.log('venda = ',this.venda);
+      this.venda.cliente_id = cliente.id;
+      console.log("venda = ", this.venda);
       fetch(`${BASE_URL}/vendas`, {
         method: "post",
         headers: {
@@ -320,35 +321,30 @@ export default {
           "Content-Type": "application/json"
         },
         //make sure to serialize your JSON body
-        body: JSON.stringify(this.cliente)
+        body: JSON.stringify(this.vendas)
       }).then(response => {
         window.console.log(response);
         Swal.fire("Venda efetuada", "", "success").then(
           vm.carregarDados(),
-          this.hideSelecionarClienteModal(),
+          this.hideSelecionarClienteModal()
         );
       });
     },
     selecionarClienteCpf() {
       let vm = this;
-      console.log('cpf = ',this.cliente.cpf)
-      fetch(`${BASE_URL}/clienteCpf/?cpf=${this.cliente.cpf}`).then(function(
-        response
-      ) {
-        response.json().then(function(items) {
-          vm.console.log('items = ',items);
-          vm.cliente = items;
-        });
-      });
-      console.log('cliente =', vm.cliente);
-      if(this.cliente != null){
-        this.criarVenda();
-      }
-      
+      console.log("cpf = ", this.cliente.cpf);
+      fetch(`${BASE_URL}/clienteCpf/${this.cliente.cpf}`)
+        .then(function(response) {
+          response.json().then(function(items) {
+            window.console.log("items = ", items);
+            vm.criarVenda(items);
+          });
+          return vm.cliente;
+        })
     },
-    
+
     deletarRegistro(id) {
-      console.log(id)
+      console.log(id);
       const vm = this;
       fetch(`${BASE_URL}/veiculos/${id}`, {
         method: "delete",
