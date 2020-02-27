@@ -1,24 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div>
-    <template v-for="item in items.data">
-      <CardVendas :key="item.id" :item="item" />
-    </template>
-  </div>
-</template>
-
-<script>
-
-import CardVendas from "../Cards/CardVendas";
-const BASE_URL = 'http://localhost:8000/api'
-export default {
-  name: "Vendas",
-  components: {
-    CardVendas
-  },
-  data() {
-    return {    
-=======
   <div>    
      <div class="table-responsive push mt-4">
         <table class="table table-striped ">
@@ -67,7 +47,6 @@ export default {
   },
   data() {
     return {
->>>>>>> Homolog
       items: {
         data: []
       },
@@ -77,17 +56,10 @@ export default {
   mounted() {
     this.carregarDados();
   },
-<<<<<<< HEAD
-  methods : {
-      carregarDados() {
-      const vm = this;
-      fetch(`${BASE_URL}/vendas/?page=${this.paginaAtual}`).then(function(
-=======
   methods: {
     carregarDados() {
       const vm = this;
       fetch(`${BASE_URL}/vendasDados/?page=${this.paginaAtual}`).then(function(
->>>>>>> Homolog
         response
       ) {
         response.json().then(function(items) {
@@ -98,10 +70,6 @@ export default {
     },
     atribuirPaginaAtual(pagina) {
       this.paginaAtual = pagina;
-<<<<<<< HEAD
-
-=======
->>>>>>> Homolog
       this.carregarDados();
     }
   }
