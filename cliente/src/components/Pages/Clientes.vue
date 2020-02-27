@@ -1,13 +1,14 @@
 <template>
   <div>
-    <div>
-      <h4 class="col-sm-auto mx-sm-0 mx-auto my-auto">Clientes</h4>
-      <button
-        @click="showCriarModal()"
-        class="col-auto offset-auto pb-1 text-light b-none btn btn-primary font-weight-bold mx-sm-0 mx-auto mt-sm-0 mt-3"
-      >
-        <div class="col-auto">NOVO CLIENTE</div>
-      </button>
+    <div class="container-fluid pt-3">
+       <div class="row">
+      <div class="text-light font-weight-bold col-md-6 row mx-0 px-0">
+        <h4 class="col-sm-auto mx-sm-0 mx-auto my-auto">CLIENTES</h4>
+        <button @click="showCriarModal()" class="col-auto offset-auto pb-1 text-light b-none btn btn-primary font-weight-bold mx-sm-0 mx-auto mt-sm-0 mt-3">
+          <div class="col-auto">NOVO CLIENTE</div>
+        </button>
+      </div>
+      </div>
       <div class="table-responsive push mt-4">
         <table class="table table-striped">
           <thead class="text-light">
@@ -69,7 +70,7 @@
               <input
                 type="text"
                 name="nome"
-                placeholder="nome"
+                placeholder="Nome"
                 v-model="cliente.name"
                 id="nome"
                 class="bx-none bt-none w-100"
@@ -79,7 +80,7 @@
               <input
                 type="text"
                 name="email"
-                placeholder="email"
+                placeholder="Email"
                 v-model="cliente.email"
                 id="email"
                 class="bx-none bt-none w-100"
@@ -89,7 +90,7 @@
               <input
                 type="text"
                 name="address"
-                placeholder="endereço"
+                placeholder="Endereço"
                 v-model="cliente.address"
                 id="address"
                 class="bx-none bt-none w-100 col-md-3 p-0"
@@ -97,7 +98,7 @@
               <input
                 type="text"
                 name="phone"
-                placeholder="telefone"
+                placeholder="Telefone"
                 v-model="cliente.phone"
                 id="phone"
                 class="bx-none bt-none w-100 col-md-4 offset-md-1 mt-md-0 mt-2 p-0"
@@ -108,12 +109,12 @@
                 placeholder="CPF"
                 v-model="cliente.cpf"
                 id="cpf"
-                class="bx-none bt-none w-100 col-md-3 offset-md-1 p-0 mt-md-0 mt-2"
+                class="bx-none bt-none w-100 col-md-3 offset-md-1 p-0 mt-md-0 mt-2 "
               />
-              <div class="row mt-3 align-baseline">
+              <div class="row mx-0 mt-5 align-baseline w-100">
                 <button
                   @click.prevent="criarCliente()"
-                  class="col-auto btn btn-primary bg-primary ml-auto"
+                  class="col-auto btn btn-primary bg-primary px-3 ml-auto"
                 >Criar</button>
               </div>
             </div>

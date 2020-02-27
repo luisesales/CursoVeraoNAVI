@@ -1,11 +1,15 @@
 <template>
-  <div>    
-     <div class="table-responsive push mt-4">
+  <div class="container-fluid pt-3">    
+    <div class="row">
+        <h4 class="col-sm-auto mx-sm-0 mx-auto ">VENDAS</h4>        
+    </div>
+     <div class="table-responsive push mt-3">
         <table class="table table-striped ">
             <thead class=" text-light ">
                 <tr>
                   <th>Veiculo</th>
-                  <th>Valor em R$</th>
+                  <th>Placa</th>
+                  <th>Preço em R$</th>
                   <th>Data</th>
                   <th>Comprador</th>
                   <th>Vendedor</th>
@@ -15,6 +19,7 @@
                 <template v-for="item in items.data">
                   <tr :key="item.id" class="mt-2" :item="item">
                     <th>{{item.veiculo.modelo}}</th>
+                    <th>{{item.veiculo.placa}}</th>
                     <th>{{item.veiculo.valor}}</th>
                     <th>{{item.created_at}}</th>
                     <th>{{item.cliente.name}}</th>

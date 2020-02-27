@@ -11,7 +11,7 @@
         </button>
       </div>
       <div class="border rounded-pill bg-white col-auto ml-sm-auto mr-sm-3 mx-auto mt-md-0 mt-4">
-        <div class="search mr-2 mb-1 align-middle"></div>
+        <div class="search mr-2 my-auto align-middle"></div>
         <input
           type="text"
           class="by-none br-none h-100 bg-white my-auto pl-3 pr-5"
@@ -111,7 +111,7 @@
               <input
                 type="price"
                 name="valor"
-                placeholder="Preço"
+                placeholder="Preço em R$"
                 class="bx-none bt-none w-50"
                 v-model="veiculo.valor"
                 id="valor"
@@ -121,7 +121,7 @@
             <div class="row mt-3 align-baseline">
               <button
                 @click.prevent="criarVeiculo"
-                class="col-auto btn btn-primary bg-primary ml-auto"
+                class="col-auto btn btn-primary px-3 bg-primary ml-auto"
               >Criar</button>
             </div>
           </div>
@@ -201,10 +201,10 @@
               />
               <span class="align-bottom">Reais</span>
             </div>
-            <div class="row mt-3 align-baseline">
+            <div class="row mt-3 w-100 mx-0 align-baseline">
               <button
                 @click.prevent="editarVeiculo"
-                class="col-auto btn btn-primary bg-primary ml-auto"
+                class="col-auto btn btn-primary px-3 bg-primary ml-auto"
               >Atualizar</button>
             </div>
           </div>
@@ -237,10 +237,10 @@
                 class="bx-none bt-none w-100"
               />
 
-              <div class="row mt-3 align-baseline">
+              <div class="row w-100 mx-0 h-100 mt-5 pt-4 align-bottom">
                 <button
                   @click.prevent="selecionarClienteCpf()"
-                  class="col-auto btn btn-primary bg-primary ml-auto"
+                  class="col-auto btn btn-primary px-3 bg-primary mt-5 ml-auto"
                 >Prosseguir</button>
               </div>
             </div>
