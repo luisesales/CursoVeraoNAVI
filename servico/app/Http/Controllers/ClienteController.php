@@ -43,6 +43,18 @@ class clienteController extends Controller
         return $cliente;
     }
 
+     /**
+     * Display the specified resource.
+     *
+     * @param int $cpf
+     * @return JsonResponse
+     */
+    public function findByCpf($cpf)
+    {
+        $cliente = Cliente::where('cpf' , '=' , $cpf)->firstOrFail();
+        return response()->json($cliente);
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -54,7 +66,7 @@ class clienteController extends Controller
         $cliente = Cliente::findOrFail($id);
         return response()->json($cliente);
     }
-
+    
      /**
      * Update the specified resource in storage.
      *

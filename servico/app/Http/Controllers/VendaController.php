@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Veiculo;
+use App\Models\Vendendor;
+use App\Models\Cliente;
 use App\Models\Venda;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -10,6 +12,17 @@ use Illuminate\Validation\ValidationException;
 
 class VendaController extends Controller
 {
+
+    /**
+     * Display a listing of the resource with other objects.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function vendasDados()
+    {
+        
+        return response()->json(Venda::with('vendedor','veiculo','cliente')->orderBy('updated_at')->paginate(20));
+    }
     /**
      * Display a listing of the resource.
      *

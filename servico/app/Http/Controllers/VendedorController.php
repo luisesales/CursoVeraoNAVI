@@ -56,6 +56,17 @@ class VendedorController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  int  $cpf
+     * @return \Illuminate\Http\Response
+     */
+    public function findByCpf($cpf)
+    {
+        $vendedor = Vendedor::where('cpf','=',$cpf)->firstOrFail();
+        return response()->json($vendedor);
+    }
+    /**
+     * Display the specified resource.
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

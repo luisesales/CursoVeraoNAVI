@@ -17,7 +17,7 @@
         <div class="col-sm-6"><p>{{item.placa}}</p></div>  
         <div class="col-sm-6 col-auto ml-auto">
           <div class="row justify-content-end">
-            <div class="mx-2"><p> {{item.uf}} - <!--{{i.ano_fabricacao}}--></p></div> 
+            <div class="mx-2"><p> {{item.uf}} - {{item.ano_fabricacao}}</p></div> 
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-6 col-12 mt-md-0 mt-4 text-white col-auto">
           <div class="d-flex flex-column ml-auto">
-            <button @click="show()" class="pr-auto btn btn-success rounded-pill bg-green">Vender</button>
+            <button @click="showSelecionarClienteModal(item.id)" class="pr-auto btn btn-success rounded-pill bg-green">Vender</button>
           </div>
         </div>
       </div>
@@ -91,6 +91,9 @@ export default {
   methods: {
     showVeiculoModal() {
       this.$emit('editarVeiculo',this.item);
+    },
+    showSelecionarClienteModal(id) {
+      this.$emit('selecionarCliente',id);
     },
     show() {
       let vm = this;

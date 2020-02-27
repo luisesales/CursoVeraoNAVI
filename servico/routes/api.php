@@ -17,7 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('/clientes', 'ClienteController')->middleware('cors');
+Route::GET('/clienteCpf/{cpf}', 'ClienteController@findByCpf')->middleware('cors');
 Route::apiResource('/veiculos', 'VeiculoController')->middleware('cors');
 Route::apiResource('/vendedores', 'VendedorController')->middleware('cors');
+Route::GET('/vendedorCpf/{cpf}', 'VendedorController@findByCpf')->middleware('cors');
 Route::apiResource('/vendas', 'VendaController')->middleware('cors');
+Route::GET('/vendasDados', 'VendaController@vendasDados')->middleware('cors');
 Route::get('/veiculosAll','VeiculoController@indexAll')->middleware('cors');
